@@ -6,8 +6,11 @@ window.onload = () => {
     let scorePlayerB = 5;
     let cadrePlayerA = document.querySelector(".playerA");
     let cadrePlayerB = document.querySelector(".playerB");
-    // console.log("cadrePlayerA: ", cadrePlayerA);
-    // console.log("cadrePlayerB: ", cadrePlayerB);
+
+
+
+    console.log("cadrePlayerA: ", cadrePlayerA);
+    console.log("cadrePlayerB: ", cadrePlayerB);
 
     let zones = document.querySelectorAll(".bip");
     let nbrShoot = zones.length - 1;
@@ -27,12 +30,12 @@ window.onload = () => {
     function checkpass() {
 
         let unautre = this.classList;
-        console.log(unautre);
+        console.log("unautre >>> ", unautre);
 
-        let maColonne = unautre[3].slice(3);
+        let maColonne = unautre[2].slice(3);
         console.log("maColonne", maColonne);
 
-        let maLigne = unautre[2];
+        let maLigne = unautre[1];
         console.log("maLigne", maLigne);
 
         let lastshoot = document.querySelector(".shoot");
@@ -46,19 +49,19 @@ window.onload = () => {
 
 
 
-        if (unautre[0] == "line") {
+        if (unautre[0] == "trait") {
 
             console.log("c'est un trait");
             // -------------------  partie superieur  ----------------------
 
             // preparation des variables
             // variable ligne clicquable superieur ligne actuel - 2
-            let ligneDessus = (unautre[2].slice(4)) - 2;
-            let maColonne = (unautre[3].slice(3));
-
-            let verticauxGauche = unautre[3] - 1;
-            let verticauxDroit = unautre[3] + 1;
-            let ligneDecell = unautre[2] - 1;
+            let ligneDessus = (unautre[1].slice(4)) - 2;
+            let maColonne = (unautre[2].slice(3));
+            console.log("maColonne >> ", maColonne);
+            let verticauxGauche = unautre[2] - 1;
+            let verticauxDroit = unautre[2] + 1;
+            let ligneDecell = unautre[1] - 1;
             if (ligneDessus <= 1) {
                 ligneDessus = 1;
                 // si le clique etait déjà sur ligne 1 alors ligne dessus = 1
@@ -68,12 +71,12 @@ window.onload = () => {
 
             //si ligne superieur != 1
             if (ligneDessus !== 1) {
-                let elementGauchevar = `.line.trait.line${ligneDessus}.col${maColonne}.bip`;
+                let elementGauchevar = `.trait.line${ligneDessus}.col${maColonne}.bip`;
                 //detection couleur ==coul0== si = coul0 alors injection coul{joueurActif}----
                 elementGauche = document.querySelector(elementGauchevar);
                 console.log("------ ", elementGauche);
-
-                // elementGauche.classList.replace("coul0", "coul3");  // cette ligne est à conserver ! ! ! 
+                // -----------------------cette ligne est à conserver ! ! !------------------
+                elementGauche.classList.replace("coul0", "coul3");  
 
                 console.log("elementGauchevar", elementGauchevar);
                 console.log("elementGauche", elementGauche);
@@ -138,6 +141,8 @@ window.onload = () => {
 
         if (unautre[0] == "bloc") {
             console.log("c'est un block");
+            console.log(unautre);
+
             console.log(unautre[0]);
             console.log(unautre[1]);
             console.log(unautre[2]);
@@ -154,6 +159,9 @@ window.onload = () => {
             }
         }
 
+
+        cadrePlayerA.textContent = scorePlayerA;
+        cadrePlayerB.textContent = scorePlayerB;
     }
 
 }
