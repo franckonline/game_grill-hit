@@ -2,17 +2,22 @@ window.onload = () => {
 
     let joueuractif = "1";
     document.querySelector(".bip").addEventListener("click", checkpass);
+    let scorePlayerA = 5;
+    let scorePlayerB = 5;
+    let cadrePlayerA = document.querySelector(".playerA");
+    let cadrePlayerB = document.querySelector(".playerB");
+    // console.log("cadrePlayerA: ", cadrePlayerA);
+    // console.log("cadrePlayerB: ", cadrePlayerB);
 
     let zones = document.querySelectorAll(".bip");
     let nbrShoot = zones.length - 1;
-    console.log("ilreste shoot : ", nbrShoot);
+    // console.log("ilreste shoot : ", nbrShoot);
 
     zones.forEach(element => {
         element.addEventListener('click', checkpass)
     });
 
     document.querySelector(".shoot").innertext = nbrShoot;
-
     console.log("ici c'est la zone : ", zones);
 
 
@@ -41,7 +46,7 @@ window.onload = () => {
 
 
 
-        if (unautre[1] == "trait") {
+        if (unautre[0] == "line") {
 
             console.log("c'est un trait");
             // -------------------  partie superieur  ----------------------
@@ -72,8 +77,8 @@ window.onload = () => {
 
                 console.log("elementGauchevar", elementGauchevar);
                 console.log("elementGauche", elementGauche);
-                let elementDessus;
-
+                let elementDessus = elementGauche.textContent;
+                console.log("elementDessus >>", elementDessus);
 
 
                 if (joueuractif == 1) {
@@ -93,22 +98,18 @@ window.onload = () => {
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if (scorePlayerA === scorePlayerB) {
+            cadrePlayerA.style.color = "red";
+            cadrePlayerB.style.color = "red";
+        }
+        if (scorePlayerA > scorePlayerB) {
+            cadrePlayerA.style.color = "green";
+            cadrePlayerB.style.color = "red";
+        }
+        if (scorePlayerA < scorePlayerB) {
+            cadrePlayerB.style.color = "green";
+            cadrePlayerA.style.color = "red";
+        }
 
 
 
@@ -135,50 +136,22 @@ window.onload = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // console.log("traitdessus ",traitdessus);
-
-        // let decomposer;
-        // let brouette = Number(unautre[2]);
-        // console.log("chouette ", brouette);
-
-        // decomposer = unautre[5].slice(4);
-
-        // let traitdessus = Number(unautre[2] - 2);
-
-        // if (traitdessus >= 1) {
-        //     console.log("traitdessus ", traitdessus);
-        // }else{
-        //     traitdessus= 1
-        //     console.log("nouveau traitdessus ", traitdessus);
-        // }
-
-        // let zonesup = document.querySelectorAll(".bip ");
-
-        // console.log("unautre 5 : ", decomposer);
-
-
-        if (unautre[1] == "bloc") {
+        if (unautre[0] == "bloc") {
             console.log("c'est un block");
-            // console.log(unautre[0]);
+            console.log(unautre[0]);
             console.log(unautre[1]);
             console.log(unautre[2]);
             console.log(unautre[3]);
             console.log(unautre[4]);
-            console.log(unautre[5]);
+            if (joueuractif == 1) {
+                joueuractif = 0;
+                this.classList.replace("coul0", "coul1");
+                nbrShoot--;
+            } else {
+                joueuractif = 1;
+                this.classList.replace("coul0", "coul2");
+                nbrShoot--;
+            }
         }
 
     }

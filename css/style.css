@@ -153,3 +153,40 @@ main {
     width: 20px;
     /* background-color: #0ff; */
 }
+
+
+.playerA,
+.playerB {
+    position: absolute;padding:5px;
+    top: 120px;
+    width: 10px;
+    height: 10px;
+    font-size: 3rem;
+}
+
+.playerA {
+    /* background-color: rgb(255, 0, 0); */
+    left: 10px;
+}
+
+.playerB {
+    /* background-color: rgb(10, 155, 223); */
+    left: 60%;
+}
+
+.playerA:before,
+.playerB:before {
+    position: absolute;
+    padding: 5px;
+    top: -30px;
+    left:-10px;
+}
+
+.playerA:before {
+    content: "P1";
+}
+
+.playerB:before {
+    content: "P2";
+}
+
