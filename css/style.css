@@ -1,0 +1,155 @@
+:root {
+    font-size: 12px;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*-----------Gestion flex------deb---*/
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexdc {
+    flex-direction: column;
+}
+
+/*-----------Gestion flex------fin---*/
+
+
+body {
+    padding: 10px;
+    display: flex;
+
+    /* flex-direction:column; */
+    justify-content: center;
+    /* align-items: center; */
+    background-color: rgb(163, 136, 29);
+}
+
+main {
+    width: 90vw;
+    height: 95vh;
+    /* background-color: rgb(224, 208, 216); */
+}
+
+
+.line {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+
+.trait {
+    height: 10px;
+}
+
+.bloc {
+    height: 2.4%;
+    width: 100px;
+}
+
+
+.bloc.bip {
+    width: 2%;
+    height: 30px;
+}
+
+
+.dot {
+    border-radius: 50%;
+    height: 100%;
+    width: 25%;
+    background-color: rgb(241, 238, 11);
+}
+
+.cell {
+    position: relative;
+    background-color: #335f58;
+    width: 5%;
+    height: 30px;
+}
+
+.cell::before {
+    content: ' ';
+    position: absolute;
+    width: 10%;
+    height: 80%;
+    top: 5%;
+    left: 70%;
+    transform: rotate(24deg);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(255, 255, 255, 0.5) 0 0 20px;
+}
+
+.cell::after {
+    content: ' ';
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    top: 10%;
+    left: 60%;
+    transform: rotate(-14deg);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(255, 255, 255, 0.5) 0 0 20px;
+}
+
+.bip {
+    cursor: pointer;
+}
+
+.coul0 {
+    background-color: #444;
+}
+
+.coul1 {
+    background-color: red;
+}
+
+.coul2 {
+    background-color: blue;
+}
+
+.coul3 {
+    background-color: rgb(13, 209, 23);
+}
+
+.cadreplayers {
+    position: relative;
+    margin: 10px;
+    width: 20%;
+    height: 90vh;
+    background-color: #fff;
+}
+
+.shoot {
+    position: relative;
+    padding: 5px;
+    top: 50px;
+    font-size: 3rem;
+    color: blue;
+    text-shadow: chocolate 1px 1px 10px;
+}
+
+.shoot:before {
+
+    content: 'Shoot!';
+    position: absolute;
+    padding: 5px;
+    font-size: 2.4rem;
+    color: rgb(13, 209, 23);
+    top: -30px;
+    height: 20px;
+    width: 20px;
+    /* background-color: #0ff; */
+}
