@@ -19,11 +19,14 @@ window.onload = () => {
         let checksum1 = 0;
         let checksum2 = 0;
         changeplayers();
+        // définir maPosition du clic
         let unautre = this.classList;
         let typetrait = unautre[0];
+        // console.log("unautre >>> ", unautre);
         let maCouleurClic = Number(unautre[4].slice(4));
         let colonne = Number(unautre[2].slice(3));
         let Ligne = Number(unautre[1].slice(4));
+
         let lignemoins = Ligne - 1;
         let lignemoinsmoins = Ligne - 2;
         let ligneplus = Ligne + 1;
@@ -46,24 +49,24 @@ window.onload = () => {
                 checksum1 = checksum1 + 1;
             }
             console.log("valeur check1 sup gauche", checksum1);
-
+            
             // capture    du trait sup
             let bipdeuxstring = `.trait.line${lignemoinsmoins}.col${colonne}`;
             let bipdeux = document.querySelector(bipdeuxstring);
-            console.log("couleur trait sup ", Number(bipdeux.classList[4].slice(4)));
+            console.log("couleur trait sup ",Number(bipdeux.classList[4].slice(4)));
             if (Number(bipdeux.classList[4].slice(4)) >= 1) {
                 checksum1 = checksum1 + 1;
             }
-
+            
             // capture  du trait sup droite
             let biptroisstring = `.bloc.line${lignemoins}.col${colonneplus}`;
             let biptrois = document.querySelector(biptroisstring);
             console.log("valeur check1 sup droite", checksum1);
-            console.log("couleur trait sup droite ", Number(biptrois.classList[4].slice(4)));
+            console.log("couleur trait sup droite ",Number(biptrois.classList[4].slice(4)));
             if (Number(biptrois.classList[4].slice(4)) >= 1) {
                 checksum1 = checksum1 + 1;
             }
-            console.log("number du sup droite  ", checksum1);
+            console.log("number du sup droite  ",checksum1);
             console.log("valeur tot sup check_", checksum1);
 
             if (checksum1 == 3) {
@@ -81,82 +84,84 @@ window.onload = () => {
                 } else {
                     celluledessus.style.backgroundColor = "blue";
                     scorePlayerB++;
-                    // passbloc_sup_inf = 1;
+                    passbloc_sup_inf = 1;
                 }
 
-                // changeplayers();
+                changeplayers();
 
             }
 
         }
 
         function controltraitinf() {
-            console.log("deuxieme checksum_2 ", checksum2);
+            // console.log("deuxieme checksum_2 ", checksum2);
 
             // mode = trait
 
             // capture  du trait inf droite
             let bipquatrestring = `.bloc.line${ligneplus}.col${colonneplus}`;
             let bipquatre = document.querySelector(bipquatrestring);
-            console.log("bipquatre ", bipquatre);
-            console.log("couleur trait inf droite ", Number(bipquatre.classList[4].slice(4)));
             if (Number(bipquatre.classList[4].slice(4)) >= 1) {
                 checksum2 = checksum2 + 1;
             }
-            console.log("number du inf droite  ", checksum2);
 
             // capture    du trait inf
             let bipcinqstring = `.trait.line${ligneplusplus}.col${colonne}`;
+            // console.log("bipcinqstring ", bipcinqstring);
             let bipcinq = document.querySelector(bipcinqstring);
-            console.log("couleur trait inferieur ", Number(bipcinq.classList[4].slice(4)));
+            // console.log("bipcinq ", bipcinq);
+            // bipcinq.classList.replace("coul0", `coul4`);
             if (Number(bipcinq.classList[4].slice(4)) >= 1) {
                 checksum2 = checksum2 + 1;
+                // console.log("ckecksum_trait_inf ", checksum2);
             }
-            console.log("number du inferieur  ", checksum2);
+            // console.log("ckecksum2_trait_inf_inf ", checksum2);
 
             // capture  du trait sup droite
             let bipsixstring = `.bloc.line${ligneplus}.col${colonnemoins}`;
+            // console.log("bipsixstring ", bipsixstring);
             let bipsix = document.querySelector(bipsixstring);
-            console.log("couleur trait inf gauche ", Number(bipsix.classList[4].slice(4)));
+            // bipsix.classList.replace("coul0", `coul4`);
+            // console.log("bipsix ", bipsix);
             if (Number(bipsix.classList[4].slice(4)) >= 1) {
                 checksum2 = checksum2 + 1;
+                // console.log("ckecksum6_trait_inf ", checksum2);
             }
-            console.log("number du inf gauche  ", checksum2);
-            console.log("valeur tot sup check2_", checksum2);
+            // console.log("ckecksum2_tot_ ", checksum2);
+        }
 
-            if (checksum2 === 3) {
-                console.log("check2 me passe dans checksum2 === 3 ");
-                checksum2 = 0;
-                console.log("je check_22");
-                let celluleinfstring = `.bloc.line${ligneplus}.col${colonne}.cell`;
-                celluledessous = document.querySelector(celluleinfstring);
-                console.log("cell de dessous == ", celluledessous);
-                celluledessous.style.backgroundColor = "pink";
+        // console.log("passage checksum2 dans if ", checksum2);
+        if (checksum2 == 3) {
+            // console.log("cheksum2 dedans", checksum2);
+            checksum2 = 0;
+            // console.log("je check_22");
+            let celluleinfstring = `.bloc.line${ligneplus}.col${colonne}.cell`;
+            celluledessous = document.querySelector(celluleinfstring);
+            // console.log("cell de dessous == ", celluledessous);
+            celluledessous.style.backgroundColor = "pink";
 
-                if (joueuractif === 1) {
-                    celluledessous.style.backgroundColor = "red";
-                    scorePlayerA++;
-                    passbloc_sup_inf = 1;
-                } else {
-                    celluledessous.style.backgroundColor = "blue";
-                    scorePlayerB++;
-                    passbloc_sup_inf = 1;
-                }
+            if (joueuractif === 1) {
+                celluledessous.style.backgroundColor = "red";
+                scorePlayerA++;
+                passbloc_sup_inf = 1;
+            } else {
+                celluledessous.style.backgroundColor = "blue";
+                scorePlayerB++;
+                passbloc_sup_inf = 1;
+            }
 
+            if (passbloc_sup_inf === 0) {
                 changeplayers();
-               
-
+                passbloc_sup_inf = 0;
             }
+
         }
 
 
         if (typetrait == "trait" && maCouleurClic < 1) {
             this.classList.replace("coul0", `coul${joueuractif}`);
-            console.log("deuxieme checksum_2 ", checksum2);
 
-            // mode = trait
-
-                        // console.log("couleur >coul0 : ");
+            // console.log("couleur >coul0 : ");
             if (Ligne > 1 && Ligne < 33) {
                 controltraitsup();
                 controltraitinf();
@@ -175,14 +180,14 @@ window.onload = () => {
             this.classList.replace("coul0", `coul${joueuractif}`);
 
             // console.log("couleur >coul0 : ");
-            if (colonne > 1 && colonne < 49) {
+            if (colonne > 1 && colonne < 33) {
                 controltraitsup();
                 controltraitinf();
             }
             if (colonne === 1) {
                 controltraitinf();
             }
-            if (colonne === 49) {
+            if (colonne === 33) {
                 controltraitsup();
 
             }

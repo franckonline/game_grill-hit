@@ -44,10 +44,10 @@ main {
 
 .dot{
     
-    width: 5px;
-    height:5px;
+     width: 2px; 
+    height:2px;
     background-color: rgb(20, 241, 12);
-    border-radius:50%;
+    /* border-radius:50%; */
 }
 
 .line{
@@ -57,30 +57,38 @@ main {
     /* border: white solid 1px; */
 }
 
-.linebloc{
+/* .linebloc{
     display:flex;
     height:40px;
-    width:100%;
-}
+    width:98%;
+} */
 
 .trait{
     width: 100%;
     height:10px;
+   align-self: center;
 }
+
 
 .bloc{
     /* border:deeppink solid 1px; */
     width:100%;
-    height:20px;
+    height:30px;
+    align-self: center;
 }
 
 .bloc.bip{
-    width:50%;
+    width:25%;
 }
 
+.cell{
+    border: black solid 1px;
+}
 .bip{
     cursor:pointer;
+    border: black solid 1px;
 }
+
 .coul0 {
     background-color: #444;
 }
@@ -97,12 +105,18 @@ main {
     background-color: rgb(13, 209, 23);
 } 
 
+.coul4{
+    background-color: yellow;
+}
+
+
+
 .cadreplayers {
     position: relative;
     margin: 10px;
     width: 20%;
     height: 90vh;
-    background-color: #fff;
+    background-color: rgba(190, 88, 148, 0.788);
 }
 
 .shoot {
