@@ -1,5 +1,6 @@
 window.onload = () => {
     let joueuractif = "1";
+
     function changeplayers() {
         if (joueuractif == 1) {
             joueuractif = 2;
@@ -24,9 +25,12 @@ window.onload = () => {
         paschanger = 0;
         let checksum1 = 0;
         let checksum2 = 0;
+        let checksum3 = 0;
+        let checksum4 = 0;
         let unautre = this.classList;
         if (unautre[4] != "coul0") {
             alert("Attention déjà cliqué");
+            changeplayers();
         }
         let typetrait = unautre[0];
         let maCouleurClic = Number(unautre[4].slice(4));
@@ -37,7 +41,9 @@ window.onload = () => {
         let ligneplus = Ligne + 1;
         let ligneplusplus = Ligne + 2;
         let colonneplus = colonne + 1;
+        let colonneplusplus = colonne +2 ;
         let colonnemoins = colonne - 1;
+        let colonnemoinsmoins = colonne - 2;
         ///////******************************************************//////////////
         if (unautre[0] = "trait") {
             if (typetrait == "trait" && maCouleurClic < 1) {
@@ -53,7 +59,7 @@ window.onload = () => {
                     controltraitsup();
                 }
             }
-            
+
             function controltraitsup() {
                 checksum1 = 0;
                 let bipunstring = `.bloc.line${lignemoins}.col${colonnemoins}`;
@@ -122,6 +128,96 @@ window.onload = () => {
          */
         if (typetrait == "bloc") {
             this.classList.replace("coul0", `coul${joueuractif}`);
+
+            let bipsevenstring = `.trait.line${ligneplus}.col${colonnemoins}`;
+            let bipseven = document.querySelector(bipsevenstring);
+            if (Number(bipseven.classList[4].slice(4)) >= 1) {
+                checksum3 = checksum3 + 1;
+            }
+
+            console.log("seven== :",(Number(bipseven.classList[4].slice(4))));
+            console.log("checksum3 == ",checksum3);
+
+            let bipeightstring = `.bloc.line${Ligne}.col${colonnemoinsmoins}`;
+            let bipeight = document.querySelector(bipeightstring);
+            if (Number(bipeight.classList[4].slice(4)) >= 1) {
+                checksum3 = checksum3 + 1;
+            }
+
+            console.log("eight== :",(Number(bipeight.classList[4].slice(4))));
+            console.log("checksum3 == ",checksum3);
+
+
+            let bipninestring = `.trait.line${lignemoins}.col${colonnemoins}`;
+            let bipnine = document.querySelector(bipninestring);
+            if (Number(bipnine.classList[4].slice(4)) >= 1) {
+                checksum3 = checksum3 + 1;
+            }
+
+            console.log("nine== :",(Number(bipnine.classList[4].slice(4))));
+            console.log("checksum3 == ",checksum3);
+
+
+            if (checksum4 === 3) {
+                paschanger = 1;
+                checksum4 = 0;
+                let cellulegauchestring = `.bloc.line${Ligne}.col${colonnemoins}.cell`;
+                let cellulegauche = document.querySelector(cellulegauchestring);
+                console.log("cellgauche", cellulegauche);
+                if (joueuractif === 1) {
+                    cellulegauche.style.backgroundColor = "red";
+                    scorePlayerA++;
+                } else {
+                    cellulegauche.style.backgroundColor = "blue";
+                    scorePlayerB++;
+                }
+            }
+
+            // cellule droite
+            
+            let biptenstring = `.trait.line${lignemoins}.col${colonneplus}`;
+            let bipten = document.querySelector(biptenstring);
+            if (Number(bipten.classList[4].slice(4)) >= 1) {
+                checksum4 = checksum4 + 1;
+            }
+
+            console.log("ten== :",(Number(bipten.classList[4].slice(4))));
+            console.log("checksum4 == ",checksum4);
+
+            let bipelevenstring = `.bloc.line${Ligne}.col${colonneplusplus}`;
+            let bipeleven = document.querySelector(bipelevenstring);
+            if (Number(bipeleven.classList[4].slice(4)) >= 1) {
+                checksum3 = checksum3 + 1;
+            }
+
+            console.log("eleven== :",(Number(bipeleven.classList[4].slice(4))));
+            console.log("checksum4 == ",checksum4);
+
+            let biptelvestring = `.trait.line${lignemoins}.col${colonneplus}`;
+            let biptelve = document.querySelector(biptelvestring);
+            if (Number(biptelve.classList[4].slice(4)) >= 1) {
+                checksum4 = checksum4 + 1;
+            }
+
+            console.log("telve== :",(Number(biptelve.classList[4].slice(4))));
+            console.log("checksum4 == ",checksum4);
+
+            if (checksum4 === 3) {
+                paschanger = 1;
+                checksum4 = 0;
+                let celluledroitestring = `.bloc.line${Ligne}.col${colonneplus}.cell`;
+                let celluledroite = document.querySelector(celluledroitestring);
+                console.log("celldroite ", celluledroite);
+                if (joueuractif === 1) {
+                    celluledroite.style.backgroundColor = "red";
+                    scorePlayerA++;
+                } else {
+                    celluledroite.style.backgroundColor = "blue";
+                    scorePlayerB++;
+                }
+            }
+            // fin controle horizon
+
         }
 
         //gestion du shoot-------------------------------------
@@ -144,5 +240,5 @@ window.onload = () => {
             changeplayers();
         }
         paschanger = 0;
-    }// fin zone keepass
+    } // fin zone keepass
 }
