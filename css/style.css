@@ -195,7 +195,7 @@ main {
     top: 10px;
     left: 10px;
     transform: rotate(-14deg);
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.3);
     box-shadow: rgba(255, 255, 255, 0.5) 0 0 20px;
 }
 
