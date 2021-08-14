@@ -1,5 +1,6 @@
 window.onload = () => {
     let joueuractif = "1";
+    document.querySelector(".shoot").textContent = 808;
 
     function changeplayers() {
         if (joueuractif == 1) {
@@ -14,14 +15,13 @@ window.onload = () => {
     let scorePlayerB = 0;
     let cadrePlayerA = document.querySelector(".playerA");
     let cadrePlayerB = document.querySelector(".playerB");
-
+    let tir = 0;
     let zones = document.querySelectorAll(".bip");
     zones.forEach(element => {
-        element.addEventListener('click', checkpass)
+        element.addEventListener('click', checkpass);
     });
 
     function checkpass() {
-        console.log("passage en keepass");
         paschanger = 0;
         let checksum1 = 0;
         let checksum2 = 0;
@@ -45,11 +45,10 @@ window.onload = () => {
         let colonnemoins = colonne - 1;
         let colonnemoinsmoins = colonne - 2;
         ///////******************************************************//////////////
-        console.log("valeur apres keepass de typeof-trait ",unautre[0]);
         if (maCouleurClic < 1) {
+            tir++;
+            document.querySelector(".shoot").textContent = 808 - tir;
             if (unautre[0] == "trait") {
-                console.log("je rentre dans trait");
-
                 this.classList.replace("coul0", `coul${joueuractif}`);
                 if (ligne > 1 && ligne < 33) {
                     controltraitsup();
@@ -61,7 +60,6 @@ window.onload = () => {
                 if (ligne === 33) {
                     controltraitsup();
                 }
-
 
                 function controltraitsup() {
                     checksum1 = 0;
@@ -126,9 +124,6 @@ window.onload = () => {
                     }
                 }
             }
-            /**
-             *  ****************  bloc ********************
-             */
             if (typetrait == "bloc") {
                 console.log("je rentre dans bloc");
                 this.classList.replace("coul0", `coul${joueuractif}`);
@@ -138,30 +133,16 @@ window.onload = () => {
                 if (Number(bipseven.classList[4].slice(4)) >= 1) {
                     checksum3 = checksum3 + 1;
                 }
-
-                console.log("seven== :", (Number(bipseven.classList[4].slice(4))));
-                console.log("checksum3 == ", checksum3);
-
                 let bipeightstring = `.bloc.line${ligne}.col${colonnemoinsmoins}`;
                 let bipeight = document.querySelector(bipeightstring);
                 if (Number(bipeight.classList[4].slice(4)) >= 1) {
                     checksum3 = checksum3 + 1;
                 }
-
-                console.log("eight== :", (Number(bipeight.classList[4].slice(4))));
-                console.log("checksum3 == ", checksum3);
-
-
                 let bipninestring = `.trait.line${lignemoins}.col${colonnemoins}`;
                 let bipnine = document.querySelector(bipninestring);
                 if (Number(bipnine.classList[4].slice(4)) >= 1) {
                     checksum3 = checksum3 + 1;
                 }
-
-                console.log("nine== :", (Number(bipnine.classList[4].slice(4))));
-                console.log("checksum3 == ", checksum3);
-
-
                 if (checksum3 === 3) {
                     paschanger = 1;
                     checksum4 = 0;
@@ -176,40 +157,26 @@ window.onload = () => {
                         scorePlayerB++;
                     }
                 }
-
-                // cellule droite
-
                 let biptenstring = `.trait.line${lignemoins}.col${colonneplus}`;
                 let bipten = document.querySelector(biptenstring);
                 if (Number(bipten.classList[4].slice(4)) >= 1) {
                     checksum4 = checksum4 + 1;
                 }
-
-                console.log("checksum4 = ten = ", checksum4);
-
                 let bipelevenstring = `.bloc.line${ligne}.col${colonneplusplus}`;
                 let bipeleven = document.querySelector(bipelevenstring);
                 if (Number(bipeleven.classList[4].slice(4)) >= 1) {
                     checksum4 = checksum4 + 1;
                 }
-
-                console.log("checksum4 = eleven = ", checksum4);
-
                 let biptwelvestring = `.trait.line${ligneplus}.col${colonneplus}`;
                 let biptwelve = document.querySelector(biptwelvestring);
                 if (Number(biptwelve.classList[4].slice(4)) >= 1) {
                     checksum4 = checksum4 + 1;
                 }
-
-                console.log("ten: ",(Number(bipten.classList[4].slice(4))),   "eleven: ", (Number(bipeleven.classList[4].slice(4))) ,"twelve: ", (Number(biptwelve.classList[4].slice(4))));
-                console.log("checksum4 =av if = ", checksum4);
-
                 if (checksum4 === 3) {
                     paschanger = 1;
                     checksum4 = 0;
                     let celluledroitestring = `.bloc.line${ligne}.col${colonneplus}.cell`;
                     let celluledroite = document.querySelector(celluledroitestring);
-                    console.log("celldroite ", celluledroite);
                     if (joueuractif === 1) {
                         celluledroite.style.backgroundColor = "red";
                         scorePlayerA++;
@@ -218,13 +185,8 @@ window.onload = () => {
                         scorePlayerB++;
                     }
                 }
-                // fin controle horizon
-
             }
         }
-
-        //gestion du shoot-------------------------------------
-        let lastshoot = document.querySelector(".shoot");
         if (scorePlayerA === scorePlayerB) {
             cadrePlayerA.style.color = "red";
             cadrePlayerB.style.color = "red";
@@ -239,13 +201,9 @@ window.onload = () => {
         }
         cadrePlayerA.textContent = scorePlayerA;
         cadrePlayerB.textContent = scorePlayerB;
-        console.log("fin checksum 1",checksum1);
-        console.log("fin checksum 2",checksum2);
-        console.log("fin checksum 3",checksum3);
-        console.log("fin checksum 4",checksum4);
         if (paschanger == 0) {
             changeplayers();
         }
         paschanger = 0;
-    } // fin zone keepass
+    } 
 }
