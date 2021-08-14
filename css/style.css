@@ -92,6 +92,9 @@ main {
 .coul2 {
     background-color: blue;
 }
+.coul3{
+    background-color: dodgerblue;
+}
 
 .cadreplayers {
    display:flex;
@@ -111,8 +114,9 @@ main {
     text-align: center;
     height: 50px;
     width:100%;
-    font-size: 1.8rem;
+    font-size: 3rem;
     color: rgb(255, 0, 0);
+    line-height: 30px;
     text-shadow: rgb(0, 0, 0) 0 0 2px;
 }
 
@@ -121,7 +125,7 @@ main {
     content:'Shoot ! ';
     text-align: center;
     height: 20px;
-    font-size: 1.8rem;
+    font-size: 3rem;
     color: rgb(255, 0, 0);
     text-shadow: rgb(0, 0, 0) 0 0 2px;
 }
@@ -133,7 +137,7 @@ main {
     width: 90px;
     height: 150px;
     left: 30%;
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 90px;
     text-align: center;
     background-color: yellow;
@@ -166,6 +170,7 @@ main {
 
 .playerB:before {
     content: "P2";
+
     transform: rotatez(20deg) translate(0,0);
     color:blue;
 }

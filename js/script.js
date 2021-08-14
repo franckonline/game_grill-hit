@@ -5,15 +5,23 @@ window.onload = () => {
     function changeplayers() {
         if (joueuractif == 1) {
             joueuractif = 2;
+            cadrePlayerAbefore.style.transform = "scale(.7)";
+            cadrePlayerBbefore.style.transform = "scale(1)";
         } else {
             joueuractif = 1;
+            cadrePlayerAbefore.style.transform = "scale(1)";
+            cadrePlayerBbefore.style.transform = "scale(.7)";
         }
     }
+
+    //8888888888888888888888888888888888888888888888888888888888
     let paschanger = 0;
     document.querySelector(".bip").addEventListener("click", checkpass);
     let scorePlayerA = 0;
     let scorePlayerB = 0;
     let cadrePlayerA = document.querySelector(".playerA");
+    let cadrePlayerAbefore = document.querySelector(".playerA", '::before');
+    let cadrePlayerBbefore = document.querySelector(".playerB", '::before');
     let cadrePlayerB = document.querySelector(".playerB");
     let tir = 0;
     let zones = document.querySelectorAll(".bip");
@@ -22,6 +30,7 @@ window.onload = () => {
     });
 
     function checkpass() {
+
         paschanger = 0;
         let checksum1 = 0;
         let checksum2 = 0;
@@ -125,85 +134,104 @@ window.onload = () => {
                 }
             }
             if (typetrait == "bloc") {
-                console.log("je rentre dans bloc");
                 this.classList.replace("coul0", `coul${joueuractif}`);
 
-                let bipsevenstring = `.trait.line${ligneplus}.col${colonnemoins}`;
-                let bipseven = document.querySelector(bipsevenstring);
-                if (Number(bipseven.classList[4].slice(4)) >= 1) {
-                    checksum3 = checksum3 + 1;
+                if (colonne > 1 && colonne < 49) {
+                    controlblocgauche();
+                    controlblocdroite();
                 }
-                let bipeightstring = `.bloc.line${ligne}.col${colonnemoinsmoins}`;
-                let bipeight = document.querySelector(bipeightstring);
-                if (Number(bipeight.classList[4].slice(4)) >= 1) {
-                    checksum3 = checksum3 + 1;
+                if (colonne  == 1) {
+                    controlblocdroite();
                 }
-                let bipninestring = `.trait.line${lignemoins}.col${colonnemoins}`;
-                let bipnine = document.querySelector(bipninestring);
-                if (Number(bipnine.classList[4].slice(4)) >= 1) {
-                    checksum3 = checksum3 + 1;
+                if (colonne == 49) {
+                    controlblocgauche();
                 }
-                if (checksum3 === 3) {
-                    paschanger = 1;
-                    checksum4 = 0;
-                    let cellulegauchestring = `.bloc.line${ligne}.col${colonnemoins}.cell`;
-                    let cellulegauche = document.querySelector(cellulegauchestring);
-                    console.log("cellgauche", cellulegauche);
-                    if (joueuractif === 1) {
-                        cellulegauche.style.backgroundColor = "red";
-                        scorePlayerA++;
-                    } else {
-                        cellulegauche.style.backgroundColor = "blue";
-                        scorePlayerB++;
+
+                function controlblocgauche() {
+                    let bipsevenstring = `.trait.line${ligneplus}.col${colonnemoins}`;
+                    let bipseven = document.querySelector(bipsevenstring);
+                    if (Number(bipseven.classList[4].slice(4)) >= 1) {
+                        checksum3 = checksum3 + 1;
+                    }
+                    let bipeightstring = `.bloc.line${ligne}.col${colonnemoinsmoins}`;
+                    let bipeight = document.querySelector(bipeightstring);
+                    if (Number(bipeight.classList[4].slice(4)) >= 1) {
+                        checksum3 = checksum3 + 1;
+                    }
+                    let bipninestring = `.trait.line${lignemoins}.col${colonnemoins}`;
+                    let bipnine = document.querySelector(bipninestring);
+                    if (Number(bipnine.classList[4].slice(4)) >= 1) {
+                        checksum3 = checksum3 + 1;
+                    }
+                    if (checksum3 === 3) {
+                        paschanger = 1;
+                        checksum4 = 0;
+                        let cellulegauchestring = `.bloc.line${ligne}.col${colonnemoins}.cell`;
+                        let cellulegauche = document.querySelector(cellulegauchestring);
+                        if (joueuractif === 1) {
+                            cellulegauche.style.backgroundColor = "red";
+                            scorePlayerA++;
+                        } else {
+                            cellulegauche.style.backgroundColor = "blue";
+                            scorePlayerB++;
+                        }
                     }
                 }
-                let biptenstring = `.trait.line${lignemoins}.col${colonneplus}`;
-                let bipten = document.querySelector(biptenstring);
-                if (Number(bipten.classList[4].slice(4)) >= 1) {
-                    checksum4 = checksum4 + 1;
-                }
-                let bipelevenstring = `.bloc.line${ligne}.col${colonneplusplus}`;
-                let bipeleven = document.querySelector(bipelevenstring);
-                if (Number(bipeleven.classList[4].slice(4)) >= 1) {
-                    checksum4 = checksum4 + 1;
-                }
-                let biptwelvestring = `.trait.line${ligneplus}.col${colonneplus}`;
-                let biptwelve = document.querySelector(biptwelvestring);
-                if (Number(biptwelve.classList[4].slice(4)) >= 1) {
-                    checksum4 = checksum4 + 1;
-                }
-                if (checksum4 === 3) {
-                    paschanger = 1;
-                    checksum4 = 0;
-                    let celluledroitestring = `.bloc.line${ligne}.col${colonneplus}.cell`;
-                    let celluledroite = document.querySelector(celluledroitestring);
-                    if (joueuractif === 1) {
-                        celluledroite.style.backgroundColor = "red";
-                        scorePlayerA++;
-                    } else {
-                        celluledroite.style.backgroundColor = "blue";
-                        scorePlayerB++;
+
+                function controlblocdroite() {
+                    paschanger = 0;
+                    let biptenstring = `.trait.line${lignemoins}.col${colonneplus}`;
+                    let bipten = document.querySelector(biptenstring);
+
+                    if (Number(bipten.classList[4].slice(4)) >= 1) {
+                        checksum4 = checksum4 + 1;
+                    }
+                    let bipelevenstring = `.bloc.line${ligne}.col${colonneplusplus}`;
+                    let bipeleven = document.querySelector(bipelevenstring);
+                    if (Number(bipeleven.classList[4].slice(4)) >= 1) {
+                        checksum4 = checksum4 + 1;
+                    }
+                    let biptwelvestring = `.trait.line${ligneplus}.col${colonneplus}`;
+                    let biptwelve = document.querySelector(biptwelvestring);
+                    if (Number(biptwelve.classList[4].slice(4)) >= 1) {
+                        checksum4 = checksum4 + 1;
+                    }
+                    if (checksum4 === 3) {
+                        paschanger = 1;
+                        checksum4 = 0;
+                        let celluledroitestring = `.bloc.line${ligne}.col${colonneplus}.cell`;
+                        let celluledroite = document.querySelector(celluledroitestring);
+                        if (joueuractif === 1) {
+                            celluledroite.style.backgroundColor = "red";
+                            scorePlayerA++;
+                        } else {
+                            celluledroite.style.backgroundColor = "blue";
+                            scorePlayerB++;
+                        }
                     }
                 }
             }
         }
+
         if (scorePlayerA === scorePlayerB) {
-            cadrePlayerA.style.color = "red";
-            cadrePlayerB.style.color = "red";
+            cadrePlayerA.style.color = "orangered";
+            cadrePlayerB.style.color = "orangered";
         }
         if (scorePlayerA > scorePlayerB) {
-            cadrePlayerA.style.color = "green";
-            cadrePlayerB.style.color = "red";
+            cadrePlayerA.style.color = "lightgreen";
+            cadrePlayerB.style.color = "orangered";
         }
         if (scorePlayerA < scorePlayerB) {
-            cadrePlayerB.style.color = "green";
-            cadrePlayerA.style.color = "red";
+            cadrePlayerB.style.color = "lightgreen";
+            cadrePlayerA.style.color = "orangered";
         }
         cadrePlayerA.textContent = scorePlayerA;
+        cadrePlayerA.style.fontWeight = "900";
         cadrePlayerB.textContent = scorePlayerB;
+        cadrePlayerB.style.fontWeight = "900";
         if (paschanger == 0) {
             changeplayers();
         }
         paschanger = 0;
-    } 
+    }
 }
