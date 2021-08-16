@@ -1,19 +1,22 @@
 window.onload = () => {
     let joueuractif = "1";
-    document.querySelector(".shoot").textContent = 195;
+    document.querySelector(".shoot").textContent = 157;
     function changeplayers() {
         if (joueuractif == 1) {
             joueuractif = 2;
-            cadrePlayerAbefore.style.transform = "scale(.7)";
+            cadrePlayerAbefore.style.transform = "scale(.9)";
+            cadrePlayerAbefore.style.border = "red solid 2px";
             cadrePlayerBbefore.style.transform = "scale(1)";
+            cadrePlayerBbefore.style.border = "white solid 2px";
         } else {
             joueuractif = 1;
             cadrePlayerAbefore.style.transform = "scale(1)";
-            cadrePlayerBbefore.style.transform = "scale(.7)";
+            cadrePlayerAbefore.style.border = "white solid 2px";
+            cadrePlayerBbefore.style.transform = "scale(.9)";
+            cadrePlayerBbefore.style.border = "blue solid 2px";
         }
     }
     let paschanger = 0;
-    let countdejaclic = 0;
     document.querySelector(".bip").addEventListener("click", checkpass);
     let scorePlayerA = 0;
     let scorePlayerB = 0;
@@ -26,6 +29,9 @@ window.onload = () => {
     zones.forEach(element => {
         element.addEventListener('click', checkpass);
     });
+    //------------------++++++++++++++++---------------------------
+   
+
     function checkpass() {
         paschanger = 0;
         let checksum1 = 0;
@@ -34,12 +40,7 @@ window.onload = () => {
         let checksum4 = 0;
         let unautre = this.classList;
         if (unautre[4] != "coul0") {
-            countdejaclic++;
-            if (countdejaclic == 3){
-            alert("Attention déjà cliqué");
-            countdejaclic = 0;
-        }
-        changeplayers();
+                  changeplayers();
         }
         let typetrait = unautre[0];
         let maCouleurClic = Number(unautre[4].slice(4));
@@ -55,7 +56,7 @@ window.onload = () => {
         let colonnemoinsmoins = colonne - 2;
         if (maCouleurClic < 1) {
             tir++;
-            document.querySelector(".shoot").textContent = 195 - tir;
+            document.querySelector(".shoot").textContent = "tir : " + (157 - tir);
             if (unautre[0] == "horizon") {
                 this.classList.replace("coul0", `coul${joueuractif}`);
                 if (ligne > 1 && ligne < 16) {
@@ -205,16 +206,22 @@ window.onload = () => {
             }
         }
         if (scorePlayerA === scorePlayerB) {
-            cadrePlayerA.style.color = "orangered";
-            cadrePlayerB.style.color = "orangered";
+            cadrePlayerA.style.fontSize = "3rem";
+            cadrePlayerA.style.borderBox = "red 2px 2px 10px";
+            cadrePlayerB.style.fontSize = "3rem";
+            cadrePlayerB.style.borderBox = "red 2px 2px 10px";
         }
         if (scorePlayerA > scorePlayerB) {
-            cadrePlayerA.style.color = "lightgreen";
-            cadrePlayerB.style.color = "orangered";
+            cadrePlayerA.style.fontSize = "4rem";
+            cadrePlayerA.style.borderBox = "green 2px 2px 10px";
+            cadrePlayerB.style.fontSize = "2rem";
+            cadrePlayerB.style.borderBox = "red 2px 2px 10px";
         }
         if (scorePlayerA < scorePlayerB) {
-            cadrePlayerB.style.color = "lightgreen";
-            cadrePlayerA.style.color = "orangered";
+            cadrePlayerB.style.fontSize = "2rem";
+            cadrePlayerB.style.borderBox = "green 2px 2px 10px";
+            cadrePlayerA.style.fontSize = "4rem";
+            cadrePlayerA.style.borderBox = "red 2px 2px 10px";
         }
         cadrePlayerA.textContent = scorePlayerA;
         cadrePlayerA.style.fontWeight = "900";

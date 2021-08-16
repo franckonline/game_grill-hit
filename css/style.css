@@ -154,7 +154,6 @@ main {
 }
 
 .shoot {
-    /* position: relative; */
     height: 50px;
     padding: 5px;
     text-align: right;
@@ -163,12 +162,6 @@ main {
     color: rgb(255, 255, 255);
     text-shadow: chocolate 1px 1px 10px;
 }
-
-.bebe{
-    border:rgb(240, 224, 11) solid 3px;
-
-}
-
 
 .playerA,
 .playerB {
@@ -179,9 +172,10 @@ main {
     width: 170px;
     height: 180px;
     color : white;
+    font-weight: 800;
     text-align:  center;
-    box-shadow: cadetblue 3px 3px 8px;
-    /* border:rgb(240, 224, 11) solid 3px; */
+    line-height : 80px;
+    box-shadow: rgb(196, 214, 214) 3px 3px 8px;
 }
 
 .playerA {
@@ -195,9 +189,10 @@ main {
 .playerA:before,
 .playerB:before {
     position: absolute;
-    padding: 5px;
+    padding: 15px;
+    margin: 10px;
     font-size: 3rem;
-    top: -30px;
+    top: -50px;
     left: 25%;
     color:white;
 }
@@ -215,7 +210,13 @@ transform: rotateZ(20deg);
 
 }
 
-
+footer{
+    position:absolute;
+    color: white;
+    font-size: 1.2rem;
+    bottom: 0 ;
+    left: 20px;
+}
 .cell::before {
     content: ' ';
     position: absolute;
