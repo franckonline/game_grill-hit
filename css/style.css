@@ -49,7 +49,7 @@ body {
     padding: 10px;
     display: flex;
     justify-content: center;
-    background-color: rgb(163, 136, 29);
+    background-color: rgb(27, 26, 25);
 }
 
 main {
@@ -59,7 +59,6 @@ main {
     flex-direction:column;
     width: 90vw;
     height: 96vh;
-    background-color: rgb(233, 138, 14);
 }
 
 .dot {
@@ -67,6 +66,7 @@ main {
     width: 10px;
     height: 10px;
     background-color: rgb(20, 241, 12);
+    border-radius: 50%;
 }
 
 .horizon{
@@ -83,20 +83,15 @@ main {
     height: 10px;
     /* border: white solid 1px; */
 }
+
 .line.blocky{
     height: 30px;
 }
-/* .linebloc{
-    display:flex;
-    height:40px;
-    width:98%;
-} */
 
 .vertical{
     height : 30px;
     width: 10px;
 }
-
 
 .bloc {
     width: 100%;
@@ -104,13 +99,9 @@ main {
     align-self: center;
 }
 
-/* .bloc.bip {
-    width: 25%;
-} */
-
 .cell {
     position: relative;
-    border: black solid 1px;
+    border: rgba(0, 0, 0, 0.521) solid 1px;
     width: 30px;
     height: 30px;
 }
@@ -140,17 +131,16 @@ main {
     background-color: yellow;
 }
 
-
-
 .cadreplayers {
     position: relative;
     margin: 10px;
     padding: 5px;
     width: 20%;
     height: 90vh;
-    background-color: rgba(255, 255, 255, 0.562);
+    background-color: rgba(202, 173, 173, 0.384);
     border-top: 2px solid rgba(255, 255, 255, 0.863);
     border-left: 2px solid rgba(255, 255, 255, 0.856);
+    border-radius: 10px;
 }
 
 .shoot {
@@ -175,15 +165,14 @@ main {
     font-weight: 800;
     text-align:  center;
     line-height : 80px;
-    box-shadow: rgb(196, 214, 214) 3px 3px 8px;
 }
 
 .playerA {
-    background-color: rgba(235, 17, 17, 0.788);
+    background-color: rgba(240, 228, 228, 0.493);
 }
 
 .playerB {
-    background-color: rgba(102, 62, 196, 0.897);
+    background-color: rgba(240, 228, 228, 0.493);
 }
 
 .playerA:before,
@@ -199,14 +188,16 @@ main {
 
 .playerA:before {
     content: "P1";
+    color:red;
     transform: rotateZ(-20deg);
-    text-shadow: rgb(0, 0, 0) 2px 2px 15px;
+    text-shadow: rgb(233, 227, 227) 4px -4px 5px;
 }
 
 .playerB:before {
 transform: rotateZ(20deg);
     content: "P2";
-    text-shadow: rgb(0, 0, 0) 2px 2px 15px;
+    color:blue;
+    text-shadow: rgb(233, 227, 227) 4px -4px 5px;
 
 }
 

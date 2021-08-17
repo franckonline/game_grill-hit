@@ -16,6 +16,10 @@ window.onload = () => {
             cadrePlayerBbefore.style.border = "blue solid 2px";
         }
     }
+    ////////////////////////////////////////////////////////////////
+    
+    
+    ////////////////////////////////////////////////////////////////
     let paschanger = 0;
     document.querySelector(".bip").addEventListener("click", checkpass);
     let scorePlayerA = 0;
@@ -33,12 +37,12 @@ window.onload = () => {
    
 
     function checkpass() {
+        let unautre = this.classList;
         paschanger = 0;
         let checksum1 = 0;
         let checksum2 = 0;
         let checksum3 = 0;
         let checksum4 = 0;
-        let unautre = this.classList;
         if (unautre[4] != "coul0") {
                   changeplayers();
         }
@@ -66,7 +70,7 @@ window.onload = () => {
                 if (ligne === 1) {
                     controltraitinf();
                 }
-                if (ligne === 16) {
+                if (ligne === 17) {
                     controltraitsup();
                 }
                 function controltraitsup() {
@@ -137,10 +141,10 @@ window.onload = () => {
                     controlblocgauche();
                     controlblocdroite();
                 }
-                if (colonne  == 1) {
+                if (colonne  === 1) {
                     controlblocdroite();
                 }
-                if (colonne == 22) {
+                if (colonne === 23) {
                     controlblocgauche();
                 }
                 function controlblocgauche() {
@@ -207,26 +211,30 @@ window.onload = () => {
         }
         if (scorePlayerA === scorePlayerB) {
             cadrePlayerA.style.fontSize = "3rem";
-            cadrePlayerA.style.borderBox = "red 2px 2px 10px";
+            cadrePlayerA.style.boxShadow = "red 1px 1px 5px";
+            cadrePlayerA.style.fontWeight = "900";
+            cadrePlayerB.style.fontWeight = "900";
             cadrePlayerB.style.fontSize = "3rem";
-            cadrePlayerB.style.borderBox = "red 2px 2px 10px";
+            cadrePlayerB.style.boxShadow = "blue 1px 1px 5px";
         }
         if (scorePlayerA > scorePlayerB) {
             cadrePlayerA.style.fontSize = "4rem";
-            cadrePlayerA.style.borderBox = "green 2px 2px 10px";
-            cadrePlayerB.style.fontSize = "2rem";
-            cadrePlayerB.style.borderBox = "red 2px 2px 10px";
+            cadrePlayerA.style.boxShadow = "red 2px 2px 5px";
+            cadrePlayerA.style.fontWeight = "900";
+            cadrePlayerB.style.fontWeight = "600";
+            cadrePlayerB.style.fontSize = "3rem";
+            cadrePlayerB.style.boxShadow = "black 2px 2px 5px";
         }
         if (scorePlayerA < scorePlayerB) {
-            cadrePlayerB.style.fontSize = "2rem";
-            cadrePlayerB.style.borderBox = "green 2px 2px 10px";
+            cadrePlayerB.style.fontSize = "3rem";
+            cadrePlayerB.style.boxShadow = "black 2px 2px 5px";
+            cadrePlayerB.style.fontWeight = "900";
+            cadrePlayerA.style.fontWeight = "600";
             cadrePlayerA.style.fontSize = "4rem";
-            cadrePlayerA.style.borderBox = "red 2px 2px 10px";
+            cadrePlayerA.style.boxShadow = "red 2px 2px 5px";
         }
         cadrePlayerA.textContent = scorePlayerA;
-        cadrePlayerA.style.fontWeight = "900";
         cadrePlayerB.textContent = scorePlayerB;
-        cadrePlayerB.style.fontWeight = "900";
         if (paschanger == 0) {
             changeplayers();
         }
