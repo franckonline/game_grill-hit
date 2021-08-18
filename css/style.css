@@ -20,28 +20,30 @@
     flex-direction: column;
 }
 
-.flexac{
+.flexac {
     align-items: center;
 }
 
-.flexspe{
-  justify-content: space-evenly ;
+.flexspe {
+    justify-content: space-evenly;
 }
 
-.flexjc{
+.flexjc {
     justify-content: center;
-    }
+}
 
-    .flexspb{
-        justify-content: space-between;
-    }
+.flexspb {
+    justify-content: space-between;
+}
 
-    .flexspa{
-        justify-content: space-around;
-    }
-.flexw{
+.flexspa {
+    justify-content: space-around;
+}
+
+.flexw {
     justify-content: left;
 }
+
 /*-----------Gestion flex------fin---*/
 
 
@@ -53,10 +55,11 @@ body {
 }
 
 main {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction:column;
+    flex-direction: column;
     width: 90vw;
     height: 96vh;
 }
@@ -69,10 +72,10 @@ main {
     border-radius: 50%;
 }
 
-.horizon{
+.horizon {
     height: 10px;
     width: 30px;
-    
+
 }
 
 .line {
@@ -84,12 +87,12 @@ main {
     /* border: white solid 1px; */
 }
 
-.line.blocky{
+.line.blocky {
     height: 30px;
 }
 
-.vertical{
-    height : 30px;
+.vertical {
+    height: 30px;
     width: 10px;
 }
 
@@ -161,10 +164,10 @@ main {
     font-size: 4rem;
     width: 170px;
     height: 180px;
-    color : white;
+    color: white;
     font-weight: 800;
-    text-align:  center;
-    line-height : 80px;
+    text-align: center;
+    line-height: 80px;
 }
 
 .playerA {
@@ -183,31 +186,32 @@ main {
     font-size: 3rem;
     top: -50px;
     left: 25%;
-    color:white;
+    color: white;
 }
 
 .playerA:before {
     content: "P1";
-    color:red;
+    color: red;
     transform: rotateZ(-20deg);
     text-shadow: rgb(233, 227, 227) 4px -4px 5px;
 }
 
 .playerB:before {
-transform: rotateZ(20deg);
+    transform: rotateZ(20deg);
     content: "P2";
-    color:blue;
+    color: blue;
     text-shadow: rgb(233, 227, 227) 4px -4px 5px;
 
 }
 
-footer{
-    position:absolute;
+footer {
+    position: absolute;
     color: white;
     font-size: 1.2rem;
-    bottom: 0 ;
+    bottom: 0;
     left: 20px;
 }
+
 .cell::before {
     content: ' ';
     position: absolute;
@@ -230,4 +234,20 @@ footer{
     transform: rotate(-14deg);
     background-color: rgba(255, 255, 255, 0.314);
     box-shadow: rgba(255, 255, 255, 0.5) 0 0 20px;
+}
+
+.winp1 {
+    position: absolute;
+    visibility: hidden;
+    font-size: 5rem;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 300px;
+    background-color: #fa1;
+    z-index: 40;
+    line-height: 200px;
+    text-align: center;
 }

@@ -1,6 +1,8 @@
 window.onload = () => {
     let joueuractif = "1";
-    document.querySelector(".shoot").textContent = 157;
+
+    document.querySelector(".shoot").textContent = 195;
+
     function changeplayers() {
         if (joueuractif == 1) {
             joueuractif = 2;
@@ -17,14 +19,15 @@ window.onload = () => {
         }
     }
     ////////////////////////////////////////////////////////////////
-    
-    
+
+
     ////////////////////////////////////////////////////////////////
     let paschanger = 0;
     document.querySelector(".bip").addEventListener("click", checkpass);
     let scorePlayerA = 0;
     let scorePlayerB = 0;
     let cadrePlayerA = document.querySelector(".playerA");
+    let winp1 = document.querySelector(".winp1");
     let cadrePlayerAbefore = document.querySelector(".playerA", '::before');
     let cadrePlayerBbefore = document.querySelector(".playerB", '::before');
     let cadrePlayerB = document.querySelector(".playerB");
@@ -34,9 +37,11 @@ window.onload = () => {
         element.addEventListener('click', checkpass);
     });
     //------------------++++++++++++++++---------------------------
-   
+
 
     function checkpass() {
+        console.clear();
+        console.log("------ ", tir);
         let unautre = this.classList;
         paschanger = 0;
         let checksum1 = 0;
@@ -44,7 +49,7 @@ window.onload = () => {
         let checksum3 = 0;
         let checksum4 = 0;
         if (unautre[4] != "coul0") {
-                  changeplayers();
+            changeplayers();
         }
         let typetrait = unautre[0];
         let maCouleurClic = Number(unautre[4].slice(4));
@@ -60,7 +65,7 @@ window.onload = () => {
         let colonnemoinsmoins = colonne - 2;
         if (maCouleurClic < 1) {
             tir++;
-            document.querySelector(".shoot").textContent = "tir : " + (157 - tir);
+            document.querySelector(".shoot").textContent = "tir : " + (195 - tir);
             if (unautre[0] == "horizon") {
                 this.classList.replace("coul0", `coul${joueuractif}`);
                 if (ligne > 1 && ligne < 16) {
@@ -73,6 +78,7 @@ window.onload = () => {
                 if (ligne === 17) {
                     controltraitsup();
                 }
+
                 function controltraitsup() {
                     checksum1 = 0;
                     let bipunstring = `.line${lignemoins}.col${colonnemoins}`;
@@ -104,6 +110,7 @@ window.onload = () => {
                         }
                     }
                 }
+
                 function controltraitinf() {
                     let bipquatrestring = `.line${ligneplus}.col${colonneplus}`;
                     let bipquatre = document.querySelector(bipquatrestring);
@@ -141,12 +148,13 @@ window.onload = () => {
                     controlblocgauche();
                     controlblocdroite();
                 }
-                if (colonne  === 1) {
+                if (colonne === 1) {
                     controlblocdroite();
                 }
                 if (colonne === 23) {
                     controlblocgauche();
                 }
+
                 function controlblocgauche() {
                     let bipsevenstring = `.line${ligneplus}.col${colonnemoins}`;
                     let bipseven = document.querySelector(bipsevenstring);
@@ -177,6 +185,7 @@ window.onload = () => {
                         }
                     }
                 }
+
                 function controlblocdroite() {
                     let biptenstring = `.line${lignemoins}.col${colonneplus}`;
                     let bipten = document.querySelector(biptenstring);
@@ -239,5 +248,19 @@ window.onload = () => {
             changeplayers();
         }
         paschanger = 0;
+
+        console.log("tir ", tir);
+        if (scorePlayerA > scorePlayerB) {
+            winp1.textContent = " P1 Winner";
+        } else {
+            winp1.textContent = " P2 Winner";
+        }
+        if (tir === 195) {
+            winp1.style.visibility = "visible";
+        } else {
+            winp1.style.visibility = "hidden";
+        }
+
     }
+
 }
