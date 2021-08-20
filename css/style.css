@@ -251,3 +251,19 @@ footer {
     line-height: 200px;
     text-align: center;
 }
+
+.stargame {
+    position: absolute;
+    visibility: visible;
+    font-size: 5rem;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 300px;
+    background-color: rgb(44, 117, 252);
+    z-index: 40;
+    line-height: 200px;
+    text-align: center;
+}

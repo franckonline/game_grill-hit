@@ -1,5 +1,9 @@
 window.onload = () => {
     let joueuractif = "1";
+    let sonoclic = new Audio('sound/Clic3.mp3');
+    let sonoambient = new Audio('sound/ingame.mp3');
+    let endsaga = new Audio('sound/endsaga.mp3');
+    let cellwin = new Audio('sound/cell.mp3');
 
     document.querySelector(".shoot").textContent = 195;
 
@@ -40,8 +44,8 @@ window.onload = () => {
 
 
     function checkpass() {
-        console.clear();
-        console.log("------ ", tir);
+        sonoclic.play();
+        sonoambient.play();
         let unautre = this.classList;
         paschanger = 0;
         let checksum1 = 0;
@@ -108,6 +112,7 @@ window.onload = () => {
                             celluledessus.style.backgroundColor = "blue";
                             scorePlayerB++;
                         }
+                        cellwin.play();
                     }
                 }
 
@@ -139,6 +144,7 @@ window.onload = () => {
                             celluledessous.style.backgroundColor = "blue";
                             scorePlayerB++;
                         }
+                        cellwin.play();
                     }
                 }
             }
@@ -183,6 +189,7 @@ window.onload = () => {
                             cellulegauche.style.backgroundColor = "blue";
                             scorePlayerB++;
                         }
+                        cellwin.play();
                     }
                 }
 
@@ -214,6 +221,7 @@ window.onload = () => {
                             celluledroite.style.backgroundColor = "blue";
                             scorePlayerB++;
                         }
+                        cellwin.play();
                     }
                 }
             }
@@ -252,11 +260,18 @@ window.onload = () => {
         console.log("tir ", tir);
         if (scorePlayerA > scorePlayerB) {
             winp1.textContent = " P1 Winner";
-        } else {
+
+        } else if (scorePlayerA < scorePlayerB) {
             winp1.textContent = " P2 Winner";
+        } else {
+            winp1.textContent = " No Winner";
+
         }
+
+
         if (tir === 195) {
             winp1.style.visibility = "visible";
+            endsaga.play();
         } else {
             winp1.style.visibility = "hidden";
         }
