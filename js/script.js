@@ -1,9 +1,28 @@
 window.onload = () => {
+
     let joueuractif = "1";
     let sonoclic = new Audio('sound/Clic3.mp3');
     let sonoambient = new Audio('sound/ingame.mp3');
     let endsaga = new Audio('sound/endsaga.mp3');
     let cellwin = new Audio('sound/cell.mp3');
+    let voirlavideo = document.querySelector(".videodemo");
+    let franck =document.querySelector(".razlebol");
+    
+    document.querySelector("#voir_demo").addEventListener("click", function () {
+        voirlavideo.style.display = "block";
+        sonoambient.pause();
+        franck.volume = 0.1;
+    })
+    
+    document.querySelector(".stopvideo").addEventListener("click", function(){
+        voirlavideo.style.display = "none";
+        franck.volume = 0;
+        
+    })
+      
+    document.querySelector("#btn-stop").addEventListener("click", function () {
+        sonoambient.pause();
+    })
 
     document.querySelector(".shoot").textContent = 195;
 
